@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.dailyfratze</groupId>
+    <artifactId>commons-text</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>commons-text</name>
+    <description>Library for working with text.</description>
+    <url>https://dailyfratze.de</url>
+    <inceptionYear>2018</inceptionYear>
+    <organization>
+        <name>michael-simons.eu</name>
+        <url>http://michael-simons.eu</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <developers>
+        <developer>
+            <name>Michael J. Simons</name>
+            <email>michael@simons.ac</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.version>10</java.version>
+        <lombok.version>1.16.22</lombok.version>
+		<jool.version>0.9.13</jool.version>
+		<jsoup.version>1.11.3</jsoup.version>
+		<wikitext.version>2.3.0</wikitext.version>
+    </properties>
+
+	<repositories>
+		<repository>
+			<id>mylyn-releases</id>
+			<url>http://repo.michael-simons.eu/</url>
+		</repository>
+	</repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.eclipse.mylyn</groupId>
+			<artifactId>wikitext.core</artifactId>
+			<version>${wikitext.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.mylyn</groupId>
+			<artifactId>wikitext.textile</artifactId>
+			<version>${wikitext.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jool</artifactId>
+            <version>${jool.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
