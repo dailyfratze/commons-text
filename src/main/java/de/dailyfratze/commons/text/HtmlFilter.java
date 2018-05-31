@@ -29,7 +29,7 @@ import org.jsoup.safety.Whitelist;
  *
  * @author Michael J. Simons, 2014-12-26
  */
-public class HtmlFilter implements TextFilter {
+public final class HtmlFilter implements TextFilter {
 
 	private final Whitelist whitelist;
 
