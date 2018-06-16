@@ -45,10 +45,10 @@ class TextFilterTest {
 			var autoBrTextFilter = TextFilter.AUTO_BR;
 
 			assertAll(
-					() -> assertNull(autoBrTextFilter.apply(null, Optional.empty())),
-					() -> assertEquals("", autoBrTextFilter.apply("", Optional.empty())),
-					() -> assertEquals("  ", autoBrTextFilter.apply("  ", Optional.empty())),
-					() -> assertEquals("	", autoBrTextFilter.apply("	", Optional.empty()))
+					() -> assertNull(autoBrTextFilter.apply(null, null)),
+					() -> assertEquals("", autoBrTextFilter.apply("", null)),
+					() -> assertEquals("  ", autoBrTextFilter.apply("  ", null)),
+					() -> assertEquals("	", autoBrTextFilter.apply("	", null))
 			);
 		}
 
@@ -59,7 +59,7 @@ class TextFilterTest {
 					tuple("Das ist ein Test", "Das ist ein Test"),
 					tuple("Das ist\n ein Test", "Das ist<br /> ein Test"),
 					tuple("Das ist auch:\r\n\n\r\nJa!", "Das ist auch:<br /><br /><br />Ja!")
-			).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, TextFilter.AUTO_BR.apply(t.v1, Optional.empty()))));
+			).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, TextFilter.AUTO_BR.apply(t.v1, null))));
 		}
 	}
 }

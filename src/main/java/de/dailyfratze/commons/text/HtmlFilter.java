@@ -62,11 +62,11 @@ public final class HtmlFilter implements TextFilter {
 	 * {@code dirtyText}
 	 * @return A cleand text (in UTF-8 encoding)
 	 */
-	public String apply(final String dirtyText, final Optional<String> baseUrl) {
+	public String apply(final String dirtyText, final String baseUrl) {
 		String rv = dirtyText;
 		if (!(rv == null || rv.trim().isEmpty())) {
 			final Cleaner cleaner = new Cleaner(this.whitelist);
-			final Document cleanedDocument = cleaner.clean(Jsoup.parseBodyFragment(rv, baseUrl.orElse("")));
+			final Document cleanedDocument = cleaner.clean(Jsoup.parseBodyFragment(rv, Optional.ofNullable(baseUrl).orElse("")));
 			cleanedDocument
 					.outputSettings()
 					.prettyPrint(false)

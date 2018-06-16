@@ -39,10 +39,10 @@ class TextileFilterTest {
 		var textileFilter = new TextileFilter();
 
 		assertAll(
-				() -> assertNull(textileFilter.apply(null, Optional.empty())),
-				() -> assertEquals("", textileFilter.apply("", Optional.empty())),
-				() -> assertEquals(" ", textileFilter.apply(" ", Optional.empty())),
-				() -> assertEquals("	", textileFilter.apply("	", Optional.empty()))
+				() -> assertNull(textileFilter.apply(null, null)),
+				() -> assertEquals("", textileFilter.apply("", null)),
+				() -> assertEquals(" ", textileFilter.apply(" ", null)),
+				() -> assertEquals("	", textileFilter.apply("	", null))
 		);
 	}
 
@@ -96,7 +96,7 @@ class TextileFilterTest {
 				tuple(
 						new HtmlFilter("a").apply("aber \"die da vom bloeden Institut\":http://www.statoek.wiso.uni-goettingen.de/cms/user/index.php?lang=de&section=teaching.ss2008.statistics haben\n\n"
 								+ "\"Test 1 textile\":http://planet-punk.de/?s=queen&section=2\n\n"
-								+ "<a href=\"http://planet-punk.de/?s=queen&section=2\">Test 2 ancho2r</a>", Optional.empty()),
+								+ "<a href=\"http://planet-punk.de/?s=queen&section=2\">Test 2 ancho2r</a>", null),
 						"<p>aber \n"
 								+ "	<a href=\"http://www.statoek.wiso.uni-goettingen.de/cms/user/index.php?lang=de&amp;section=teaching.ss2008.statistics\">die da vom bloeden Institut</a> haben\n"
 								+ "</p>\n"
@@ -110,6 +110,6 @@ class TextileFilterTest {
 						"<p>\n"
 								+ "	<a href=\"/my/attachments/7999\">P1000177.JPG</a>\n"
 								+ "</p>"
-				)).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, textileFilter.apply(t.v1, Optional.empty()))));
+				)).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, textileFilter.apply(t.v1, null))));
 	}
 }

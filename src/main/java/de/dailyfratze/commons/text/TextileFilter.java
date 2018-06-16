@@ -42,7 +42,7 @@ public final class TextileFilter implements TextFilter {
 	 * @return Formatted document
 	 */
 	@Override
-	public String apply(final String textileContent, final Optional<String> baseUrl) {
+	public String apply(final String textileContent, final String baseUrl) {
 		String rv = textileContent;
 		if (!(rv == null || rv.trim().isEmpty())) {
 			try (final StringWriter out = new StringWriter()) {

@@ -55,10 +55,10 @@ class SmileyFilterTest {
 	public void shouldHandleNullAndEmptyInput() {
 		var smileyService = new SmileyFilter("buildPatternTest", this.getClass().getResourceAsStream("/smilies/buildPatternTest.pak"));
 		assertAll(
-				() -> assertNull(smileyService.apply(null, Optional.empty())),
-				() -> assertEquals("", smileyService.apply("", Optional.empty())),
-				() -> assertEquals(" ", smileyService.apply(" ", Optional.empty())),
-				() -> assertEquals("	", smileyService.apply("	", Optional.empty()))
+				() -> assertNull(smileyService.apply(null, null)),
+				() -> assertEquals("", smileyService.apply("", null)),
+				() -> assertEquals(" ", smileyService.apply(" ", null)),
+				() -> assertEquals("	", smileyService.apply("	", null))
 		);
 	}
 
@@ -83,9 +83,9 @@ class SmileyFilterTest {
 				tuple(" :d :darthvader: :darthvader:so ist das  :D", " " + smiley5 + " " + smiley4 + " :darthvader:so ist das  " + smiley3),
 				tuple("In diesem Text ist http://NichtsLustig.de aber sowas von nicht", "In diesem Text ist http://NichtsLustig.de aber sowas von nicht")
 
-		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, smileyFilter.apply(t.v1, Optional.empty()))));
+		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, smileyFilter.apply(t.v1, null))));
 
-		var hlp = "Tweet 1 https://twitter.com/Astro_Alex/status/512976828924190720 und nun soetwas Assert.assertEquals(in, smileyFilter.generateSmilies(in, Optional.empty())); \n"
+		var hlp = "Tweet 1 https://twitter.com/Astro_Alex/status/512976828924190720 und nun soetwas Assert.assertEquals(in, smileyFilter.generateSmilies(in, null)); \n"
 				+ "\n"
 				+ "evventuell auch\n"
 				+ "\n"
@@ -94,7 +94,7 @@ class SmileyFilterTest {
 				+ "aber warum?\n"
 				+ "* blah\n"
 				+ "* blub";
-		var pt2 = Stream.of(dynamicTest("Langer Text", () -> assertEquals(hlp, smileyFilter.apply(hlp, Optional.of("http://localhost:8080")))));
+		var pt2 = Stream.of(dynamicTest("Langer Text", () -> assertEquals(hlp, smileyFilter.apply(hlp, "http://localhost:8080"))));
 		return Stream.concat(pt1, pt2);
 	}
 
@@ -107,6 +107,6 @@ class SmileyFilterTest {
 		var s1 = "<img class=\"dfs\" src=\"/images/smilies/length/blub.gif\" alt=\"blub.gif\" title=\":}-)\" />";
 		var s2 = "<img class=\"dfs\" src=\"/images/smilies/length/blah.gif\" alt=\"blah.gif\" title=\":}\" />";
 
-		assertEquals(s1 + s2, smileyService.apply(in, Optional.empty()));
+		assertEquals(s1 + s2, smileyService.apply(in, null));
 	}
 }

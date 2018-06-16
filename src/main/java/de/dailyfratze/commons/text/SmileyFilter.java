@@ -168,7 +168,7 @@ public final class SmileyFilter implements TextFilter {
 	 * @return A text with images instead of smilie codes
 	 */
 	@Override
-	public String apply(final String in, final Optional<String> baseUrl) {
+	public String apply(final String in, final String baseUrl) {
 		if (in == null) {
 			return null;
 		}

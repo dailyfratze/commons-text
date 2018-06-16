@@ -24,7 +24,7 @@ import java.util.function.BiFunction;
  * @author Michael J. Simons, 2015-01-03
  */
 @FunctionalInterface
-public interface TextFilter extends BiFunction<String, Optional<String>, String> {
+public interface TextFilter extends BiFunction<String, String, String> {
 
 	/**
 	 * Replaces all line breaks with {@code <br />} tags.

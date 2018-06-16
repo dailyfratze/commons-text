@@ -39,10 +39,10 @@ class HtmlFilterTest {
 		var htmlFilter = new HtmlFilter();
 
 		assertAll(
-				() -> assertNull(htmlFilter.apply(null, Optional.empty())),
-				() -> assertEquals("", htmlFilter.apply("", Optional.empty())),
-				() -> assertEquals(" ", htmlFilter.apply(" ", Optional.empty())),
-				() -> assertEquals("	", htmlFilter.apply("	", Optional.empty()))
+				() -> assertNull(htmlFilter.apply(null, null)),
+				() -> assertEquals("", htmlFilter.apply("", null)),
+				() -> assertEquals(" ", htmlFilter.apply(" ", null)),
+				() -> assertEquals("	", htmlFilter.apply("	", null))
 		);
 	}
 
@@ -58,12 +58,12 @@ class HtmlFilterTest {
 				tuple("blah \" <a <3 and 3>' http://simons.ac?blah=blub&foo=bar", "blah \" ' http://simons.ac?blah=blub&foo=bar"),
 				tuple("<3 }:-> <3", "<3 }:-> <3"),
 				tuple("this is <not a > tag", "this is  tag")
-		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, new HtmlFilter().apply(t.v1, Optional.empty()))));
+		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, new HtmlFilter().apply(t.v1, null))));
 
 		var pt2 = Stream.of(
 				tuple("Das ist ein <xx>langer</xx> Test zu <a href=\"http://simons.ac\">simons.ac</a>.", "Das ist ein langer Test zu <a href=\"http://simons.ac\">simons.ac</a>.", new String[]{"a"}),
 				tuple("<p>blah <del>foo</del>bar <3  E></p>", "<p>blah <del>foo</del>bar <3  E></p>", new String[]{"p", "del"})
-		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, new HtmlFilter(t.v3).apply(t.v1, Optional.empty()))));
+		).map(t -> dynamicTest(t.v1, () -> assertEquals(t.v2, new HtmlFilter(t.v3).apply(t.v1, null))));
 
 		return Stream.concat(pt1, pt2);
 	}
