@@ -42,7 +42,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <java.version>10</java.version>
-		<lombok.version>1.16.22</lombok.version>
+		<lombok.version>1.18.0</lombok.version>
 		<jool.version>0.9.13</jool.version>
 		<jsoup.version>1.11.3</jsoup.version>
 		<wikitext.version>2.3.0</wikitext.version>
